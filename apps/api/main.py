@@ -69,11 +69,30 @@ app.add_middleware(
 
 @app.get("/api/v1/health")
 def health():
-    available = (ARTIFACTS / "champion" / "model.joblib").is_file()
-    metadata = read_json(ARTIFACTS / "champion" / "metadata.json") if available else {}
+    required = (
+        "champion/model.joblib",
+        "champion/metadata.json",
+        "champion/metrics.json",
+        "champion/feature_schema.json",
+        "reports/eda.json",
+        "reports/growth_curve.json",
+        "reports/linearity.json",
+        "reports/model_comparison.json",
+        "reports/fairness.json",
+        "reports/importance.json",
+        "reports/residual_summary.json",
+        "plots/salary_vs_experience.png",
+    )
+    missing = [name for name in required if not (ARTIFACTS / name).is_file()]
+    if missing:
+        raise HTTPException(
+            503,
+            detail={"code": "DEPLOYMENT_INCOMPLETE", "missing_artifacts": missing},
+        )
+    metadata = read_json(ARTIFACTS / "champion" / "metadata.json")
     return {
         "status": "ok",
-        "model_loaded": available,
+        "model_loaded": True,
         "model_version": metadata.get("model_version"),
     }
 

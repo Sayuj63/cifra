@@ -31,6 +31,13 @@ def test_unavailable_model_is_explicit(monkeypatch, tmp_path):
     main.load_model.cache_clear()
 
 
+def test_health_requires_explore_artifacts(monkeypatch, tmp_path):
+    monkeypatch.setattr(main, "ARTIFACTS", tmp_path)
+    response = CLIENT.get("/api/v1/health")
+    assert response.status_code == 503
+    assert "reports/eda.json" in response.json()["detail"]["missing_artifacts"]
+
+
 def test_real_prediction_after_training():
     if not (main.ARTIFACTS / "champion" / "model.joblib").exists():
         return

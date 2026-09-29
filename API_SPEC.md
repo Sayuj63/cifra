@@ -21,6 +21,8 @@ Response:
 }
 ```
 
+Health returns HTTP 503 with `DEPLOYMENT_INCOMPLETE` and the missing artifact paths until the model, reports, and Explore plot are all present. Render uses this endpoint as its deployment readiness check.
+
 ---
 
 # 2. Model metadata
