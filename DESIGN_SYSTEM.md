@@ -2,7 +2,7 @@
 
 ## 1. Principle
 
-CompLens should look like a professional scientific product, not an admin dashboard.
+CompLens uses the same visual language as [The Arrow Arch landing page](https://arrow-arch-landing.vercel.app/): white editorial space, charcoal typography, cool gray technical rules, restrained orange, framed proof surfaces, and small monospace metadata. The reference implementation is [arrow-arch-landing](https://github.com/Sayuj63/arrow-arch-landing). CompLens content and ML behavior remain its own.
 
 Keywords:
 
@@ -19,21 +19,20 @@ Keywords:
 # 2. Color tokens
 
 ```css
---bg: #FAFAF8;
+--bg: #FFFFFF;
 --surface: #FFFFFF;
---surface-muted: #F6F5F2;
+--surface-muted: #F5F6F7;
 
---text: #171717;
---text-secondary: #676762;
---text-tertiary: #92918B;
+--text: #121820;
+--text-secondary: #68717F;
+--text-tertiary: #8A8E93;
 
---border: #E8E6E1;
---border-strong: #D9D6CF;
+--border: #E8E9EB;
+--border-strong: #DADDE2;
 
---orange: #FF5A1F;
---orange-hover: #E94A12;
---orange-soft: #FFF1EA;
---orange-tint: #FFF8F4;
+--orange: #FF5A00;
+--orange-hover: #E24D00;
+--orange-soft: #FFF4EC;
 
 --positive: #1F7A55;
 --warning: #A66A00;
@@ -46,20 +45,18 @@ Do not add alternate brand colors without a reason.
 
 # 3. Typography
 
-Recommended:
+The exact reference font packages are installed and self-hosted with the app:
 
-Primary:
-- Geist or Inter
-
-Monospace:
-- Geist Mono or IBM Plex Mono
+- Body and controls: `@fontsource-variable/inter` (`Inter Variable`)
+- Headlines and brand: `@fontsource-variable/space-grotesk` (`Space Grotesk Variable`)
+- Technical labels and metadata: SFMono/Consolas monospace stack
 
 Scale:
 
-- Display: 48 / 52
-- H1: 32 / 38
-- H2: 24 / 30
-- H3: 18 / 24
+- Display: 68 / 75 maximum on desktop
+- Page H1: 42–64 / 46–70
+- H2: 30–42 / 33–46
+- H3: 18–23 / 22–28
 - Body: 15 / 23
 - Small: 13 / 19
 - Label: 12 / 16
@@ -70,7 +67,7 @@ Use monospaced numerals selectively for metrics, versions, and technical metadat
 
 # 4. Radius
 
-- buttons: 7px
+- buttons: 6–7px
 - inputs: 7px
 - cards: 10px
 - large containers: 12px max
@@ -98,14 +95,7 @@ Base spacing scale:
 
 # 6. Shadows
 
-Default:
-no shadow.
-
-Use subtle shadow only for:
-- floating popover
-- dropdown
-- dialog
-- elevated contextual menu
+Use Arrow Arch's restrained framed-surface shadow for the model evidence console, data tables, charts, and form panels. Controls use a very faint shadow. Avoid large floating cards.
 
 Main page hierarchy should rely on:
 - spacing
@@ -132,7 +122,7 @@ Orange must not be scattered decoratively.
 
 # 8. Navigation
 
-Use a slim top navigation.
+Use the Arrow Arch 72px white top navigation with a dark primary CTA, an orange brand mark, and an underline for the current link. The mobile menu uses two slim rules.
 
 Suggested:
 
@@ -159,7 +149,7 @@ Actions:
 - Estimate compensation
 - Explore the model
 
-Below hero, show real model metadata once available.
+The centered hero sits over a faint edge grid, followed by a framed model evidence console. Below the hero, show real model metadata once available.
 
 Do not show fake metrics while artifacts are unavailable.
 
