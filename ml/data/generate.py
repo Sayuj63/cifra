@@ -97,7 +97,7 @@ def main() -> None:
     args = parser.parse_args()
     frame = generate(args.rows, args.seed)
     RAW.parent.mkdir(parents=True, exist_ok=True)
-    frame.to_csv(RAW, index=False, float_format="%.3f")
+    frame.to_csv(RAW, index=False, float_format="%.3f", lineterminator="\n")
     digest = hashlib.sha256(RAW.read_bytes()).hexdigest()
     profile = {
         "rows": len(frame),

@@ -32,7 +32,7 @@ For a reproducible DVC pipeline, run `dvc repro` after installing optional ops d
 
 ## Evaluation protocol
 
-The generator writes 7,500 rows by default, seed 42. Salary combines role, education, industry, city, certifications, a saturating experience curve, role interactions, and heteroscedastic noise. Missingness is added after target construction. Validation rejects impossible values and unknown categories.
+The generator writes 7,500 rows by default, seed 42, with LF CSV line endings for the same dataset hash across operating systems. Salary combines role, education, industry, city, certifications, a saturating experience curve, role interactions, and heteroscedastic noise. Missingness is added after target construction. Validation rejects impossible values and unknown categories.
 
 The 70/15/15 training/calibration/test split happens before preprocessing. Each candidate is a serializable sklearn pipeline with median numeric imputation and one-hot categorical encoding. Polynomial regression expands experience only. All five candidates use the same five training folds. Optuna searches tree-family settings using CV RMSE. The champion is selected by mean CV RMSE; held-out test data is used only after selection. Calibration errors create the 90% split-conformal interval.
 
@@ -64,6 +64,6 @@ npm --prefix apps/web run build
 
 ## Deployment
 
-The source is in the private GitHub repository `Sayuj63/complens`. The selected API host is Render. Its free Singapore blueprint in `render.yaml` generates and trains the model during the build and allows the exact Vercel production origin. The Vercel project `complens-web` is linked to the repository with root directory `apps/web`; its functions also run in Singapore. Set `NEXT_PUBLIC_API_URL` to the actual Render service URL ending in `/api/v1` before the production web build. Verify `/api/v1/health`, `/api/v1/predict`, and browser CORS after deployment. Live URL verification remains pending.
+The live product is [complens-web.vercel.app](https://complens-web.vercel.app). The [Render API](https://complens-api.onrender.com/api/v1/health) runs the free Singapore blueprint in `render.yaml`, which generates data, EDA reports and plots, and the trained model at build time. The Vercel project `complens-web` is linked to the private `Sayuj63/complens` repository with root directory `apps/web`; its functions run in Singapore. `NEXT_PUBLIC_API_URL` is set to `https://complens-api.onrender.com/api/v1`. Live health, inference, explanation, analysis, plot, CORS, and browser checks passed. Render's free service can sleep after inactivity, so the first request may take longer.
 
 [Deploy the API on Render](https://render.com/deploy?repo=https://github.com/Sayuj63/complens). Because the repository is private, Render needs access to it through its GitHub App. The Blueprint uses the free web service plan. The old Railway configuration remains available as an alternative.

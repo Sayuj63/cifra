@@ -2,7 +2,7 @@
 
 ## Problem and data
 
-Estimate annual salary in INR/year from six candidate attributes for a recruitment consultancy scenario. The project uses 7,500 deterministic synthetic profiles because the required attributes are not consistently available together in one public survey. SHA-256: `8e7abdefcb7d1f066a3fd845271195bf82076c72daa0a4c4e75e02250db752d3`. Missing experience: 1.97%; missing certifications: 4.01%. The data is educational and is not a live salary benchmark.
+Estimate annual salary in INR/year from six candidate attributes for a recruitment consultancy scenario. The project uses 7,500 deterministic synthetic profiles because the required attributes are not consistently available together in one public survey. SHA-256: `4c4608134b8e0c1e80e7ef1b409236adc3ef515406914ac3a6de435082b5c965`. Missing experience: 1.97%; missing certifications: 4.01%. The data is educational and is not a live salary benchmark.
 
 ## Method
 

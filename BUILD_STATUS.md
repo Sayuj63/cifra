@@ -1,6 +1,6 @@
 # CompLens build status
 
-The implementation followed the phase gates in [TASKS.md](TASKS.md). Phases 00–25 are implemented and verified locally. Phase 26 has deployable configuration and a private GitHub source repository, but no public deployment because no hosting account is connected in this workspace.
+The implementation followed the phase gates in [TASKS.md](TASKS.md). Phases 00–26 are implemented. The public product is at [complens-web.vercel.app](https://complens-web.vercel.app) and its API is at [complens-api.onrender.com](https://complens-api.onrender.com/api/v1/health).
 
 | Phase group | Delivered evidence |
 |---|---|
@@ -8,8 +8,8 @@ The implementation followed the phase gates in [TASKS.md](TASKS.md). Phases 00�
 | 04–10 · model science | Five required regressors; shared five-fold CV; Optuna tree tuning; training-fold model selection; final test metrics; residual and linearity reports |
 | 11–15 · interpretation and operations | Tree SHAP for local predictions; permutation importance; city ablation; city error and coverage; 90% split-conformal intervals; DVC lockfile; five offline W&B experiment runs; serialized champion and model card |
 | 16–23 · product | FastAPI inference and reporting routes; custom Next.js design system; Landing, Estimate, Explore, Model Lab, Explain, Fairness, and Methodology screens |
-| 24–25 · QA | `pytest`: 5 passed; Ruff: passed; frontend typecheck, ESLint, and production build: passed; Playwright: 3 passed; `dvc status`: up to date |
-| 26 · deployment | Private `Sayuj63/complens` repository, free Render blueprint with exact Vercel CORS origin, pinned Python version, and linked `complens-web` Vercel project are ready. Remote health, inference, and browser checks await Render service creation and production deployments. |
+| 24–25 · QA | `pytest`: 6 passed; Ruff: passed; frontend typecheck, ESLint, and production build: passed; Playwright: 3 passed; `dvc status`: up to date |
+| 26 · deployment | Render API and Vercel web app are live in Singapore. Remote health, prediction, explanation, counterfactual, curve, report, plot, CORS, and browser checks passed, including the Explore chart. |
 
 ## Verified model result
 
@@ -19,4 +19,4 @@ The implementation followed the phase gates in [TASKS.md](TASKS.md). Phases 00�
 - Held-out test MAE: ₹0.9747 lakh/year.
 - Nominal interval coverage: 90%; observed held-out coverage: 90.13%.
 
-These numbers come from `artifacts/champion/metrics.json`. The generated dataset is synthetic and is not a live salary survey. Offline W&B runs are local and ignored by Git; set `COMPLENS_WANDB=1` and `WANDB_MODE=offline` during training to reproduce them. The pinned W&B version in `pyproject.toml` has been verified on this Windows workspace.
+These numbers come from `artifacts/champion/metrics.json`. The generated dataset is synthetic and is not a live salary survey. CSV output uses LF line endings so local and deployed dataset SHA-256 values match: `4c4608134b8e0c1e80e7ef1b409236adc3ef515406914ac3a6de435082b5c965`. Offline W&B runs are local and ignored by Git; set `COMPLENS_WANDB=1` and `WANDB_MODE=offline` during training to reproduce them. The pinned W&B version in `pyproject.toml` has been verified on this Windows workspace.

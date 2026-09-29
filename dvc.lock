@@ -13,8 +13,8 @@ stages:
       size: 544
     - path: ml/data/generate.py
       hash: md5
-      md5: 577a7406f9748025df4e280b138383cd
-      size: 4154
+      md5: 20e47027c2a0abbd7dd1efbf56bbffbf
+      size: 4175
     params:
       params.yaml:
         rows: 7500
@@ -22,7 +22,7 @@ stages:
     outs:
     - path: artifacts/reports/data_profile.json
       hash: md5
-      md5: ea0b74d8243b188acb0f8ba4ab9d2a68
+      md5: ad624a7a82aab4fc94fae2becdc90845
       size: 801
     - path: artifacts/reports/missingness.json
       hash: md5
@@ -30,15 +30,15 @@ stages:
       size: 160
     - path: data/raw/salary_survey.csv
       hash: md5
-      md5: 2c2b230c8bbafee39d9b416356dcf6b1
-      size: 495482
+      md5: ac386739610614ddd7e336c416a55b65
+      size: 487981
   eda:
     cmd: python -m ml.evaluation.eda
     deps:
     - path: data/raw/salary_survey.csv
       hash: md5
-      md5: 2c2b230c8bbafee39d9b416356dcf6b1
-      size: 495482
+      md5: ac386739610614ddd7e336c416a55b65
+      size: 487981
     - path: ml/evaluation/eda.py
       hash: md5
       md5: 8472e7f0174e33e072ab2c845cf6f35d
@@ -46,32 +46,32 @@ stages:
     outs:
     - path: artifacts/plots/certifications.png
       hash: md5
-      md5: ecfa744a9867da6454703aa1ad152138
-      size: 13491
+      md5: ab2f8fa4adca9106ad7af7aa0c9e85e1
+      size: 13375
     - path: artifacts/plots/salary_by_city.png
       hash: md5
-      md5: add60721576f6a57e868abc4b36d6175
-      size: 18729
+      md5: e30b6ddd9186474452cd0142e996ab78
+      size: 18695
     - path: artifacts/plots/salary_by_education_level.png
       hash: md5
-      md5: f595ceff21ae6a290c02368c1c1f94a4
-      size: 15429
+      md5: 5fe681439c8abf7ba156205dd1986710
+      size: 15375
     - path: artifacts/plots/salary_by_industry.png
       hash: md5
-      md5: de9b1ece4941bd12f6076eef16ba8104
-      size: 18703
+      md5: 08d1c64b13484864bc1a4c18c2c6e8f3
+      size: 18676
     - path: artifacts/plots/salary_by_job_role.png
       hash: md5
-      md5: 3da7add27a239a27b4e03a937d475585
-      size: 24088
+      md5: d0dd87373d619cf04e8526963f929b4d
+      size: 24065
     - path: artifacts/plots/salary_distribution.png
       hash: md5
-      md5: 926c653de182520089e9ca8f7c707f8a
+      md5: d03ccd0e5cdfba9984c38a62f84a3045
       size: 15934
     - path: artifacts/plots/salary_vs_experience.png
       hash: md5
-      md5: c83569be5d08575cb19ff1168fbf9339
-      size: 62938
+      md5: 70bbca86dd96b2350e9899bfeba26106
+      size: 62926
     - path: artifacts/reports/eda.json
       hash: md5
       md5: 09b781dc95a4cc830e0b68842ccb346c
@@ -81,8 +81,8 @@ stages:
     deps:
     - path: data/raw/salary_survey.csv
       hash: md5
-      md5: 2c2b230c8bbafee39d9b416356dcf6b1
-      size: 495482
+      md5: ac386739610614ddd7e336c416a55b65
+      size: 487981
     - path: ml/config.py
       hash: md5
       md5: be372eee78dd2d46d74e7be0c4620562
@@ -119,8 +119,8 @@ stages:
     outs:
     - path: artifacts/champion
       hash: md5
-      md5: aa57656d356c60189cd91f85898ec031.dir
-      size: 126286
+      md5: f18b624bbcf7a683ad5c8f86254a923c.dir
+      size: 126285
       nfiles: 4
     - path: artifacts/plots/residual_histogram.png
       hash: md5
@@ -152,8 +152,8 @@ stages:
       size: 223
     - path: artifacts/reports/model_comparison.json
       hash: md5
-      md5: 4750c3989df413ba679633094fec779f
-      size: 14606
+      md5: 96319b646282258af425b6549d4e769c
+      size: 14607
     - path: artifacts/reports/residual_summary.json
       hash: md5
       md5: 6cdfd9d4ba74742991ecdd2a45853312
