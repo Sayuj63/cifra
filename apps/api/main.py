@@ -1,4 +1,4 @@
-"""CompLens inference and artifact-backed reporting API."""
+"""Cifra inference and artifact-backed reporting API."""
 
 from __future__ import annotations
 
@@ -52,7 +52,14 @@ def artifact(path: Path):
     return read_json(path)
 
 
-app = FastAPI(title="CompLens API", version="1.0.0")
+app = FastAPI(
+    title="Cifra API",
+    description=(
+        "Evidence-based annual salary estimates in INR from a reproducible "
+        "synthetic research dataset."
+    ),
+    version="1.0.0",
+)
 origins = [
     value.strip()
     for value in os.getenv("COMPLENS_CORS_ORIGINS", "http://localhost:3000").split(",")

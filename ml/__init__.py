@@ -1,1 +1,1 @@
-"""CompLens reproducible ML package."""
+"""Cifra reproducible ML package."""

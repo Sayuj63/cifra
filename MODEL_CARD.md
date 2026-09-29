@@ -1,4 +1,4 @@
-# CompLens Model Card
+# Cifra Model Card
 
 ## Model identity
 

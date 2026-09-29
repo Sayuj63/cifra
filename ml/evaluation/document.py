@@ -19,7 +19,7 @@ def build() -> None:
         f"₹{item['cv']['mean']['mae'] / 100000:.2f}L |"
         for item in comparison["models"]
     ]
-    card = f"""# CompLens Model Card
+    card = f"""# Cifra Model Card
 
 ## Model identity
 
@@ -69,7 +69,7 @@ Global importance is measured by permutation RMSE increase. Tree-based champions
 Run `python -m ml.data.generate`, `python -m ml.evaluation.eda`, and `python -m ml.models.train --trials 3`, or `dvc repro`. Training produces the model, metadata, reports, plots, and calibration radius. No test labels enter hyperparameter selection.
 """
     (ROOT / "MODEL_CARD.md").write_text(card, encoding="utf-8")
-    report = f"""# CompLens — Employee Salary Prediction Case Study
+    report = f"""# Cifra — Employee Salary Prediction Case Study
 
 ## Problem and data
 
@@ -107,7 +107,7 @@ FastAPI loads the serialized pipeline and artifact metadata. Next.js calls the A
 """
     (ROOT / "REPORT.md").write_text(report, encoding="utf-8")
     strongest = read_json(reports / "importance.json")[0]
-    presentation = f"""# CompLens presentation outline
+    presentation = f"""# Cifra presentation outline
 
 1. **Problem.** A recruitment consultancy needs evidence-based annual salary estimates in INR. Open the landing page.
 2. **Data.** Show Methodology: {profile["rows"]:,} deterministic synthetic candidates, six features, and controlled missingness. Explain that the figures are educational.

@@ -1,6 +1,10 @@
-# CompLens — Evidence-based salary intelligence
+<p align="center"><img src="apps/web/public/cifra-logo.png" alt="Cifra logo" width="180"></p>
 
-CompLens is a reproducible academic salary prediction system: deterministic synthetic data, five required sklearn regressors, five-fold cross-validation, Optuna tuning, residual and fairness diagnostics, a split-conformal prediction interval, a FastAPI inference service, and a Next.js product UI. Salaries are annual INR. Synthetic figures are educational and are **not** live market benchmarks.
+# Cifra — Evidence-based salary intelligence
+
+**Estimate compensation. Understand why. Quantify uncertainty.**
+
+Cifra is a reproducible academic salary prediction system: deterministic synthetic data, five required sklearn regressors, five-fold cross-validation, Optuna tuning, residual and fairness diagnostics, a split-conformal prediction interval, a FastAPI inference service, and a Next.js product UI. Salaries are annual INR. Synthetic figures are educational and are **not** live market benchmarks.
 
 ## Quick start
 
@@ -28,7 +32,7 @@ npm --prefix apps/web run dev
 
 Open `http://localhost:3000`. API docs are at `http://localhost:8000/docs`.
 
-For a reproducible DVC pipeline, run `dvc repro` after installing optional ops dependencies, then run `python -m ml.evaluation.document` to refresh the model card and report. The DVC graph is generate → EDA and train. The DVC cache may need a shorter local path on Windows when the repository lives in a deep OneDrive directory, for example `dvc config --local cache.dir C:/Users/<you>/.complens-dvc-cache`.
+For a reproducible DVC pipeline, run `dvc repro` after installing optional ops dependencies, then run `python -m ml.evaluation.document` to refresh the model card and report. The DVC graph is generate → EDA and train. The DVC cache may need a shorter local path on Windows when the repository lives in a deep OneDrive directory, for example `dvc config --local cache.dir C:/Users/<you>/.cifra-dvc-cache`.
 
 ## Evaluation protocol
 
@@ -50,7 +54,7 @@ The product has Landing, Estimate, Explore, Model Lab, Explain, Fairness, and Me
 - `artifacts/reports/`: fold scores, tuning history, EDA, linearity, importance, city ablation, fairness, residuals, and provenance.
 - `artifacts/plots/`: reproducible charts with labeled units.
 
-W&B is optional so training works without an account. Set `COMPLENS_WANDB=1` and `WANDB_MODE=offline` to create five local experiment runs and model artifacts; these can be synced later with W&B credentials. Set `WANDB_API_KEY` and omit offline mode for remote tracking. Copy `.env.example` for the API/CORS and frontend URL settings. Only load trusted local joblib artifacts.
+W&B is optional so training works without an account. Set `COMPLENS_WANDB=1` and `WANDB_MODE=offline` to create five local experiment runs and model artifacts; these can be synced later with W&B credentials. The `COMPLENS_*` environment keys remain for compatibility with the deployed API. Set `WANDB_API_KEY` and omit offline mode for remote tracking. Copy `.env.example` for the API/CORS and frontend URL settings. Only load trusted local joblib artifacts.
 
 ## Checks
 
@@ -64,6 +68,6 @@ npm --prefix apps/web run build
 
 ## Deployment
 
-The live product is [complens-web.vercel.app](https://complens-web.vercel.app). The [Render API](https://complens-api.onrender.com/api/v1/health) runs the free Singapore blueprint in `render.yaml`, which generates data, EDA reports and plots, and the trained model at build time. The Vercel project `complens-web` is linked to the private `Sayuj63/complens` repository with root directory `apps/web`; its functions run in Singapore. `NEXT_PUBLIC_API_URL` is set to `https://complens-api.onrender.com/api/v1`. Live health, inference, explanation, analysis, plot, CORS, and browser checks passed. Render's free service can sleep after inactivity, so the first request may take longer.
+The live product is [cifra-salary.vercel.app](https://cifra-salary.vercel.app); the earlier [complens-web.vercel.app](https://complens-web.vercel.app) address remains attached. The [Render API](https://complens-api.onrender.com/api/v1/health) runs the free Singapore blueprint in `render.yaml`, which generates data, EDA reports and plots, and the trained model at build time. The Vercel project `cifra-salary` is linked to the public [Sayuj63/cifra](https://github.com/Sayuj63/cifra) repository with root directory `apps/web`; its functions run in Singapore. `NEXT_PUBLIC_API_URL` is set to `https://complens-api.onrender.com/api/v1`. The Render service retains its original stable URL and allows both web origins. Render's free service can sleep after inactivity, so the first request may take longer.
 
-[Deploy the API on Render](https://render.com/deploy?repo=https://github.com/Sayuj63/complens). Because the repository is private, Render needs access to it through its GitHub App. The Blueprint uses the free web service plan. The old Railway configuration remains available as an alternative.
+[Deploy the API on Render](https://render.com/deploy?repo=https://github.com/Sayuj63/cifra). The Blueprint uses the free web service plan. The old Railway configuration remains available as an alternative.

@@ -1,4 +1,4 @@
-# CompLens Master Specification
+# Cifra Master Specification
 
 ## 1. Problem
 
@@ -102,7 +102,7 @@ Raw Data
 # 5. Repository architecture
 
 ```text
-complens/
+cifra/
 │
 ├── apps/
 │   ├── web/

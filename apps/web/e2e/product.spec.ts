@@ -1,13 +1,14 @@
 import { expect, test } from "@playwright/test";
 
 test("candidate receives real prediction and explanation", async ({ page }) => {
+  test.setTimeout(70_000); // The first local SHAP request can initialize slowly.
   const errors: string[] = [];
   page.on("pageerror", error => errors.push(error.message));
   await page.goto("/estimate");
   await expect(page.getByRole("button", { name: /Estimate salary/ })).toBeEnabled();
   await page.getByRole("button", { name: /Estimate salary/ }).click();
   await expect(page.getByText("Estimated annual compensation", { exact: false })).toBeVisible();
-  await expect(page.getByText("Why this estimate?")).toBeVisible();
+  await expect(page.getByText("Why this estimate?")).toBeVisible({ timeout: 30_000 });
   await expect(page.getByText("Tree SHAP grouped by raw feature", { exact: false })).toBeVisible();
   await expect(page.getByText("90% prediction interval", { exact: false })).toBeVisible();
   await page.screenshot({ path: "test-results/estimate-desktop.png", fullPage: true });

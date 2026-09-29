@@ -1,8 +1,8 @@
-# CompLens Design System
+# Cifra Design System
 
 ## 1. Principle
 
-CompLens uses the same visual language as [The Arrow Arch landing page](https://arrow-arch-landing.vercel.app/): white editorial space, charcoal typography, cool gray technical rules, restrained orange, framed proof surfaces, and small monospace metadata. The reference implementation is [arrow-arch-landing](https://github.com/Sayuj63/arrow-arch-landing). CompLens content and ML behavior remain its own.
+Cifra uses the same visual language as [The Arrow Arch landing page](https://arrow-arch-landing.vercel.app/): white editorial space, charcoal typography, cool gray technical rules, restrained orange, framed proof surfaces, and small monospace metadata. The reference implementation is [arrow-arch-landing](https://github.com/Sayuj63/arrow-arch-landing). Cifra content and ML behavior remain its own.
 
 Keywords:
 
@@ -127,7 +127,7 @@ Use the Arrow Arch 72px white top navigation with a dark primary CTA, an orange 
 Suggested:
 
 ```text
-CompLens    Estimate  Explore  Model Lab  Explain  Fairness  Methodology
+Cifra    Estimate  Explore  Model Lab  Explain  Fairness  Methodology
 ```
 
 Do not use a permanent sidebar unless a later information architecture genuinely requires one.
@@ -142,7 +142,7 @@ Hero copy:
 
 Supporting copy:
 
-> CompLens benchmarks candidate compensation using validated regression models and exposes the uncertainty and reasoning behind every estimate.
+> Cifra benchmarks candidate compensation using validated regression models and exposes the uncertainty and reasoning behind every estimate.
 
 Actions:
 

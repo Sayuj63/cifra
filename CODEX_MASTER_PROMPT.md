@@ -1,6 +1,6 @@
-# Codex Master Prompt — CompLens
+# Codex Master Prompt — Cifra
 
-You are building a complete machine-learning product named **CompLens**.
+You are building a complete machine-learning product named **Cifra**.
 
 Before touching code, read:
 

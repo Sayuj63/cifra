@@ -1,4 +1,4 @@
-/* CompLens visual system adapted from the Arrow Arch landing page. */
+/* Cifra visual system adapted from the Arrow Arch landing page. */
 :root {
   --bg: #fff;
   --surface: #fff;
@@ -31,8 +31,8 @@ p { color: var(--secondary); line-height: 1.65; }
 .site-header { background: #ffffffef; backdrop-filter: blur(12px); border-bottom: 1px solid #e9eaec; }
 .header-inner { max-width: 1240px; min-height: 72px; padding: 0 28px; gap: 28px; }
 .brand { gap: 9px; font: 750 13px/1 var(--display); letter-spacing: -.035em; }
-.brand-mark { position: relative; width: 28px; height: 28px; border-radius: 0; color: var(--orange); background: none; font: 750 29px/.9 var(--display); letter-spacing: -.15em; transform: skew(-6deg); }
-.brand-mark span { position: absolute; right: 1px; bottom: 2px; color: var(--text); font-size: 19px; }
+.brand-logo-frame { position: relative; display: inline-block; flex: 0 0 32px; width: 32px; height: 32px; overflow: hidden; }
+.brand-logo { position: absolute; top: -16px; left: -16px; display: block; max-width: none; width: 64px; height: 64px; }
 .nav { margin: auto; gap: 26px; }
 .nav a { position: relative; padding: 25px 0; border: 0; color: #54565b; font-size: 13px; }
 .nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 19px; height: 1px; background: var(--orange); transform: scaleX(0); transform-origin: left; transition: transform .2s; }
@@ -111,8 +111,8 @@ main::after { top: 35px; right: 0; }
 .evidence-bar > div, .evidence-bar > span { display: flex; align-items: center; gap: 10px; }
 .evidence-bar > span { font-size: 8px; }
 .evidence-bar i { display: block; width: 5px; height: 5px; border-radius: 50%; background: var(--orange); }
-.evidence-mark { color: var(--orange); font: 750 17px/1 var(--display); letter-spacing: -.12em; }
-.evidence-mark span { color: var(--text); }
+.evidence-logo-frame { position: relative; display: inline-block; flex: 0 0 23px; width: 23px; height: 23px; overflow: hidden; }
+.evidence-logo { position: absolute; top: -11.5px; left: -11.5px; display: block; max-width: none; width: 46px; height: 46px; }
 .evidence-divider { color: #b0b5ba; }
 .evidence-body { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(250px, .8fr); min-height: 198px; }
 .evidence-title { padding: 30px 32px; background: radial-gradient(circle at 1px 1px, #e9eaed 1px, transparent 0) 0 0 / 16px 16px, #fff; }

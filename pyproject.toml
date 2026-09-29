@@ -1,5 +1,5 @@
 [project]
-name = "complens"
+name = "cifra"
 version = "0.1.0"
 requires-python = ">=3.12"
 dependencies = ["numpy>=2.0", "pandas>=2.2", "scikit-learn>=1.6", "scipy>=1.14", "matplotlib>=3.9", "joblib>=1.4", "optuna>=4.0", "fastapi>=0.115", "uvicorn>=0.30", "pydantic>=2.9", "PyYAML>=6", "shap>=0.46"]

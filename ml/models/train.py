@@ -310,7 +310,7 @@ def run(trials: int = 3) -> None:
         for item in comparison:
             slug = item["model"].lower().replace(" ", "-")
             with wandb.init(
-                project=os.getenv("WANDB_PROJECT", "complens"),
+                project=os.getenv("WANDB_PROJECT", "cifra"),
                 name=slug + "-v1",
                 config={
                     "seed": SEED,
@@ -358,7 +358,7 @@ def run(trials: int = 3) -> None:
                             ),
                         }
                     )
-                    artifact = wandb.Artifact("complens-champion", type="model", metadata=metadata)
+                    artifact = wandb.Artifact("cifra-champion", type="model", metadata=metadata)
                     artifact.add_dir(str(champion))
                     run.log_artifact(artifact)
                 else:
@@ -370,7 +370,7 @@ def run(trials: int = 3) -> None:
                         candidate_path,
                     )
                     artifact = wandb.Artifact(
-                        f"complens-{slug}",
+                        f"cifra-{slug}",
                         type="model",
                         metadata={"dataset_sha256": source_hash, "cv": item["cv"]["mean"]},
                     )

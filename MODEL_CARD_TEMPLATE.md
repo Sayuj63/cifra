@@ -1,9 +1,9 @@
-# Model Card — CompLens
+# Model Card — Cifra
 
 ## Model details
 
 Model name:
-CompLens Salary Estimator
+Cifra Salary Estimator
 
 Version:
 TBD

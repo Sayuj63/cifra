@@ -1,6 +1,6 @@
-# CompLens build status
+# Cifra build status
 
-The implementation followed the phase gates in [TASKS.md](TASKS.md). Phases 00–26 are implemented. The public product is at [complens-web.vercel.app](https://complens-web.vercel.app) and its API is at [complens-api.onrender.com](https://complens-api.onrender.com/api/v1/health).
+The implementation followed the phase gates in [TASKS.md](TASKS.md). Phases 00–27 are implemented. The public product is at [cifra-salary.vercel.app](https://cifra-salary.vercel.app) and its API is at [complens-api.onrender.com](https://complens-api.onrender.com/api/v1/health).
 
 | Phase group | Delivered evidence |
 |---|---|
@@ -10,6 +10,7 @@ The implementation followed the phase gates in [TASKS.md](TASKS.md). Phases 00�
 | 16–23 · product | FastAPI inference and reporting routes; custom Next.js design system; Landing, Estimate, Explore, Model Lab, Explain, Fairness, and Methodology screens |
 | 24–25 · QA | `pytest`: 6 passed; Ruff: passed; frontend typecheck, ESLint, and production build: passed; Playwright: 3 passed; `dvc status`: up to date |
 | 26 · deployment | Render API and Vercel web app are live in Singapore. Remote health, prediction, explanation, counterfactual, curve, report, plot, CORS, and browser checks passed, including the Explore chart. |
+| 27 · Cifra brand | User-supplied logo in the UI, favicon, social metadata, manifest and repository README; Cifra names across the app, API and generated documents; public GitHub repository; branded Vercel domain with both origins allowed by the API. |
 
 ## Verified model result
 

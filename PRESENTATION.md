@@ -1,4 +1,4 @@
-# CompLens presentation outline
+# Cifra presentation outline
 
 1. **Problem.** A recruitment consultancy needs evidence-based annual salary estimates in INR. Open the landing page.
 2. **Data.** Show Methodology: 7,500 deterministic synthetic candidates, six features, and controlled missingness. Explain that the figures are educational.

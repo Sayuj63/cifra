@@ -1,4 +1,4 @@
-# CompLens — Employee Salary Prediction Case Study
+# Cifra — Employee Salary Prediction Case Study
 
 ## Problem and data
 

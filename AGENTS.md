@@ -1,10 +1,10 @@
-# AGENTS.md — CompLens Operating Rules
+# AGENTS.md — Cifra Operating Rules
 
 This file contains non-negotiable instructions for any coding agent working in this repository.
 
 ## 1. Mission
 
-Build **CompLens**, a production-style Employee Salary Prediction ML project for a B.Tech CSE Semester V machine-learning case study.
+Build **Cifra**, a production-style Employee Salary Prediction ML project for a B.Tech CSE Semester V machine-learning case study.
 
 The system must satisfy every academic requirement while demonstrating professional ML engineering.
 
