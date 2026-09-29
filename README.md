@@ -64,4 +64,4 @@ npm --prefix apps/web run build
 
 ## Deployment
 
-`render.yaml` defines a Python web service that generates and trains its model at build time. Set `COMPLENS_CORS_ORIGINS` to the deployed frontend origin. Deploy `apps/web` as a Next.js app and set `NEXT_PUBLIC_API_URL` to the backend `/api/v1` URL. Neither service has been published by this repository alone; a cloud account and domain are required for a live URL.
+The source is in the private GitHub repository `Sayuj63/complens`. The API can use the free Render blueprint in `render.yaml` or the Railway service configuration in `railway.json`; both generate and train the model during the build. Set `COMPLENS_CORS_ORIGINS` to the exact deployed frontend origin. On Vercel, import the GitHub repository with root directory `apps/web`, then set `NEXT_PUBLIC_API_URL` to the backend URL ending in `/api/v1` before its production build. Verify `/api/v1/health`, `/api/v1/predict`, and browser CORS after deployment. Hosting account connection and live URL verification remain pending.
