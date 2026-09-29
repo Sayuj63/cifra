@@ -9,7 +9,7 @@ The implementation followed the phase gates in [TASKS.md](TASKS.md). Phases 00�
 | 11–15 · interpretation and operations | Tree SHAP for local predictions; permutation importance; city ablation; city error and coverage; 90% split-conformal intervals; DVC lockfile; five offline W&B experiment runs; serialized champion and model card |
 | 16–23 · product | FastAPI inference and reporting routes; custom Next.js design system; Landing, Estimate, Explore, Model Lab, Explain, Fairness, and Methodology screens |
 | 24–25 · QA | `pytest`: 5 passed; Ruff: passed; frontend typecheck, ESLint, and production build: passed; Playwright: 3 passed; `dvc status`: up to date |
-| 26 · deployment | Private `Sayuj63/complens` repository, `render.yaml`, `railway.json`, pinned Python version, and frontend environment contract are ready. Remote health, inference, and CORS checks await hosting account connection and deployment. |
+| 26 · deployment | Private `Sayuj63/complens` repository, free Render blueprint with exact Vercel CORS origin, pinned Python version, and linked `complens-web` Vercel project are ready. Remote health, inference, and browser checks await Render service creation and production deployments. |
 
 ## Verified model result
 
