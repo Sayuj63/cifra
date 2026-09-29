@@ -1,0 +1,60 @@
+stages:
+  generate:
+    cmd: python -m ml.data.generate
+    params:
+      - seed
+      - rows
+    deps:
+      - ml/data/generate.py
+      - ml/config.py
+      - ml/common.py
+    outs:
+      - data/raw/salary_survey.csv
+      - artifacts/reports/data_profile.json
+      - artifacts/reports/missingness.json
+  eda:
+    cmd: python -m ml.evaluation.eda
+    deps:
+      - data/raw/salary_survey.csv
+      - ml/evaluation/eda.py
+    outs:
+      - artifacts/reports/eda.json
+      - artifacts/plots/salary_distribution.png
+      - artifacts/plots/salary_vs_experience.png
+      - artifacts/plots/salary_by_education_level.png
+      - artifacts/plots/salary_by_job_role.png
+      - artifacts/plots/salary_by_city.png
+      - artifacts/plots/salary_by_industry.png
+      - artifacts/plots/certifications.png
+  train:
+    cmd: python -m ml.models.train
+    params:
+      - seed
+      - cv_folds
+      - train_fraction
+      - calibration_fraction
+      - test_fraction
+      - nominal_interval_coverage
+      - optuna_trials_per_tree_family
+    deps:
+      - data/raw/salary_survey.csv
+      - ml/models/train.py
+      - ml/config.py
+      - ml/models/definitions.py
+      - ml/data/preprocess.py
+      - ml/evaluation/metrics.py
+      - ml/evaluation/explainability.py
+    outs:
+      - artifacts/champion
+      - artifacts/reports/model_comparison.json
+      - artifacts/reports/tuning.json
+      - artifacts/reports/residual_summary.json
+      - artifacts/reports/fairness.json
+      - artifacts/reports/importance.json
+      - artifacts/reports/growth_curve.json
+      - artifacts/reports/linearity.json
+      - artifacts/reports/test_predictions.json
+      - artifacts/reports/split.json
+      - artifacts/plots/residual_vs_predicted.png
+      - artifacts/plots/residual_vs_experience.png
+      - artifacts/plots/residual_histogram.png

@@ -1,0 +1,17 @@
+"use client";
+/* eslint-disable @next/next/no-img-element -- Plots are served directly by the separate FastAPI service. */
+
+import { useEffect, useState } from "react";
+import { Metric, Notice, PageIntro, Section } from "@/components/ui";
+import { API, money, number, request } from "@/lib/api";
+
+type Row = { model: string; cv: { mean: { r2: number; rmse: number; mae: number }; std: { rmse: number }; generalization_gap: number }; status: string; params: Record<string, number> };
+type Comparison = { selection: string; champion: string; models: Row[] };
+type Metrics = { test: { r2: number; mse: number; rmse: number; mae: number }; interval: { test_coverage: number } };
+
+export default function ModelLab() {
+  const [data, setData] = useState<{ comparison: Comparison; metrics: Metrics } | null>(null);
+  const [error, setError] = useState("");
+  useEffect(() => { Promise.all([request<Comparison>("/reports/model-comparison"),request<Metrics>("/model/metrics")]).then(([comparison,metrics]) => setData({comparison,metrics})).catch(e => setError(e.message)); }, []);
+  return <><PageIntro kicker="03 / Model benchmark" title="Five regressors. One evaluation protocol.">Each candidate uses the same training split and five shuffled folds. Selection is based on cross-validated RMSE before the held-out test set is opened.</PageIntro>{error ? <Notice kind="error">{error}</Notice> : !data ? <Notice>Loading model benchmark…</Notice> : <><Section label="Training evidence" title="Model comparison"><p className="small-note">Selection rule: {data.comparison.selection}.</p><div className="data-table-wrap"><table className="data-table"><thead><tr><th>Model</th><th>CV R²</th><th>CV RMSE</th><th>CV MAE</th><th>RMSE fold SD</th><th>Train/CV gap</th><th>Status</th></tr></thead><tbody>{data.comparison.models.map(row => <tr key={row.model} className={row.status === "champion" ? "champion" : ""}><td><strong>{row.model}</strong></td><td>{number(row.cv.mean.r2,3)}</td><td>{money(row.cv.mean.rmse)}</td><td>{money(row.cv.mean.mae)}</td><td>{money(row.cv.std.rmse)}</td><td>{money(row.cv.generalization_gap)}</td><td>{row.status === "champion" ? <span className="status">Champion</span> : "Candidate"}</td></tr>)}</tbody></table></div><p className="small-note top-space">Amounts are INR/year. Fold SD indicates variation across the five training folds.</p></Section><Section label="Untouched test" title={`${data.comparison.champion} on the held-out set`}><div className="metrics-strip"><Metric label="Test R²" value={number(data.metrics.test.r2,3)} /><Metric label="Test MSE" value={Math.round(data.metrics.test.mse).toLocaleString()} note="INR²" /><Metric label="Test RMSE" value={money(data.metrics.test.rmse)} note="INR/year" /><Metric label="Test MAE" value={money(data.metrics.test.mae)} note="INR/year" /></div></Section><Section label="Residual diagnostics" title="Where does the model miss?"><div className="report-grid"><img className="plot-img" src={`${API}/plots/residual_vs_predicted`} alt="Residual versus predicted salary, INR/year" /><img className="plot-img" src={`${API}/plots/residual_vs_experience`} alt="Residual versus experience years" /><img className="plot-img" src={`${API}/plots/residual_histogram`} alt="Residual histogram, INR/year" /></div><p className="small-note top-space">Residual = actual minus predicted. Structure or changing spread can signal remaining model error.</p></Section></>}</>;
+}

@@ -1,0 +1,172 @@
+schema: '2.0'
+stages:
+  generate:
+    cmd: python -m ml.data.generate
+    deps:
+    - path: ml/common.py
+      hash: md5
+      md5: 030a9362e8daaadbb8d1b894de9c913c
+      size: 549
+    - path: ml/config.py
+      hash: md5
+      md5: be372eee78dd2d46d74e7be0c4620562
+      size: 544
+    - path: ml/data/generate.py
+      hash: md5
+      md5: 577a7406f9748025df4e280b138383cd
+      size: 4154
+    params:
+      params.yaml:
+        rows: 7500
+        seed: 42
+    outs:
+    - path: artifacts/reports/data_profile.json
+      hash: md5
+      md5: ea0b74d8243b188acb0f8ba4ab9d2a68
+      size: 801
+    - path: artifacts/reports/missingness.json
+      hash: md5
+      md5: 5ad3fd470be658cfb7f543d6a912d984
+      size: 160
+    - path: data/raw/salary_survey.csv
+      hash: md5
+      md5: 2c2b230c8bbafee39d9b416356dcf6b1
+      size: 495482
+  eda:
+    cmd: python -m ml.evaluation.eda
+    deps:
+    - path: data/raw/salary_survey.csv
+      hash: md5
+      md5: 2c2b230c8bbafee39d9b416356dcf6b1
+      size: 495482
+    - path: ml/evaluation/eda.py
+      hash: md5
+      md5: 8472e7f0174e33e072ab2c845cf6f35d
+      size: 2664
+    outs:
+    - path: artifacts/plots/certifications.png
+      hash: md5
+      md5: ecfa744a9867da6454703aa1ad152138
+      size: 13491
+    - path: artifacts/plots/salary_by_city.png
+      hash: md5
+      md5: add60721576f6a57e868abc4b36d6175
+      size: 18729
+    - path: artifacts/plots/salary_by_education_level.png
+      hash: md5
+      md5: f595ceff21ae6a290c02368c1c1f94a4
+      size: 15429
+    - path: artifacts/plots/salary_by_industry.png
+      hash: md5
+      md5: de9b1ece4941bd12f6076eef16ba8104
+      size: 18703
+    - path: artifacts/plots/salary_by_job_role.png
+      hash: md5
+      md5: 3da7add27a239a27b4e03a937d475585
+      size: 24088
+    - path: artifacts/plots/salary_distribution.png
+      hash: md5
+      md5: 926c653de182520089e9ca8f7c707f8a
+      size: 15934
+    - path: artifacts/plots/salary_vs_experience.png
+      hash: md5
+      md5: c83569be5d08575cb19ff1168fbf9339
+      size: 62938
+    - path: artifacts/reports/eda.json
+      hash: md5
+      md5: 09b781dc95a4cc830e0b68842ccb346c
+      size: 1443
+  train:
+    cmd: python -m ml.models.train
+    deps:
+    - path: data/raw/salary_survey.csv
+      hash: md5
+      md5: 2c2b230c8bbafee39d9b416356dcf6b1
+      size: 495482
+    - path: ml/config.py
+      hash: md5
+      md5: be372eee78dd2d46d74e7be0c4620562
+      size: 544
+    - path: ml/data/preprocess.py
+      hash: md5
+      md5: aadba4d87bbf09b11c895fd2c9df7348
+      size: 1533
+    - path: ml/evaluation/explainability.py
+      hash: md5
+      md5: 73af47e876e34bb069f99dd4aaafa9f6
+      size: 5401
+    - path: ml/evaluation/metrics.py
+      hash: md5
+      md5: 0aab4c4ad920ec3facaff901e2271479
+      size: 1558
+    - path: ml/models/definitions.py
+      hash: md5
+      md5: 24a996accedf6d535f263ff2cd95f1d0
+      size: 1341
+    - path: ml/models/train.py
+      hash: md5
+      md5: bebe33e9c9140bfdb55f3a0f672bb157
+      size: 16159
+    params:
+      params.yaml:
+        calibration_fraction: 0.15
+        cv_folds: 5
+        nominal_interval_coverage: 0.9
+        optuna_trials_per_tree_family: 3
+        seed: 42
+        test_fraction: 0.15
+        train_fraction: 0.7
+    outs:
+    - path: artifacts/champion
+      hash: md5
+      md5: aa57656d356c60189cd91f85898ec031.dir
+      size: 126286
+      nfiles: 4
+    - path: artifacts/plots/residual_histogram.png
+      hash: md5
+      md5: 13660dd3ccf16cb41e696922c5546c37
+      size: 13498
+    - path: artifacts/plots/residual_vs_experience.png
+      hash: md5
+      md5: cafcfc18c53e12bb5a8618e599ac2e07
+      size: 48198
+    - path: artifacts/plots/residual_vs_predicted.png
+      hash: md5
+      md5: bc447f7d2e6e961273e13863970bb516
+      size: 50422
+    - path: artifacts/reports/fairness.json
+      hash: md5
+      md5: f2cd10361145a97f68e506c41a02d172
+      size: 2539
+    - path: artifacts/reports/growth_curve.json
+      hash: md5
+      md5: c965622f0957439226b03e55b3eeffc0
+      size: 5499
+    - path: artifacts/reports/importance.json
+      hash: md5
+      md5: 66c686916887ce684ed2207d9a45fcd5
+      size: 915
+    - path: artifacts/reports/linearity.json
+      hash: md5
+      md5: 5b45f7d4a59f116c2859909f4d7ffeba
+      size: 223
+    - path: artifacts/reports/model_comparison.json
+      hash: md5
+      md5: 4750c3989df413ba679633094fec779f
+      size: 14606
+    - path: artifacts/reports/residual_summary.json
+      hash: md5
+      md5: 6cdfd9d4ba74742991ecdd2a45853312
+      size: 282
+    - path: artifacts/reports/split.json
+      hash: md5
+      md5: a5155694b0dd845b8bbee47cdf4808fb
+      size: 114
+    - path: artifacts/reports/test_predictions.json
+      hash: md5
+      md5: 92cba0c16878042bd14a829200cc93e1
+      size: 125899
+    - path: artifacts/reports/tuning.json
+      hash: md5
+      md5: 1298ff1855558b2e67cad2d0adea9b11
+      size: 3149

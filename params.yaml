@@ -1,0 +1,8 @@
+seed: 42
+rows: 7500
+cv_folds: 5
+train_fraction: 0.70
+calibration_fraction: 0.15
+test_fraction: 0.15
+nominal_interval_coverage: 0.90
+optuna_trials_per_tree_family: 3
