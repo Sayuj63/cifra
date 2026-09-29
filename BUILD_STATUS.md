@@ -12,6 +12,8 @@ The implementation followed the phase gates in [TASKS.md](TASKS.md). Phases 00�
 | 26 · deployment | Render API and Vercel web app are live in Singapore. Remote health, prediction, explanation, counterfactual, curve, report, plot, CORS, and browser checks passed, including the Explore chart. |
 | 27 · Cifra brand | User-supplied logo in the UI, favicon, social metadata, manifest and repository README; Cifra names across the app, API and generated documents; public GitHub repository; branded Vercel domain with both origins allowed by the API. |
 
+Final brand check: [Sayuj63/cifra](https://github.com/Sayuj63/cifra) is public. The Vercel project `cifra-salary` serves the branded site at [cifra-salary.vercel.app](https://cifra-salary.vercel.app); the prior URL remains active. The Render API reports `Cifra API` and accepts the new origin. A live browser produced a salary prediction and explanation, and mobile navigation and width checks passed.
+
 ## Verified model result
 
 - Champion: Gradient Boosting Regressor, selected by training CV RMSE.

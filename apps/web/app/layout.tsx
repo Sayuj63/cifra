@@ -14,6 +14,8 @@ export const metadata: Metadata = {
   description: siteDescription,
   applicationName: siteName,
   category: "education",
+  robots: { index: true, follow: true },
+  formatDetection: { telephone: false, email: false, address: false },
   keywords: ["Cifra", "salary estimator", "salary prediction", "machine learning", "India", "prediction interval", "model explainability"],
   alternates: { canonical: "/" },
   icons: {
@@ -24,6 +26,7 @@ export const metadata: Metadata = {
   manifest: "/manifest.webmanifest",
   openGraph: {
     type: "website",
+    locale: "en_IN",
     url: siteUrl,
     siteName,
     title: siteTitle,
@@ -45,6 +48,17 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: siteName,
+  description: siteDescription,
+  url: siteUrl,
+  image: `${siteUrl}${logo}`,
+  applicationCategory: "EducationalApplication",
+  operatingSystem: "Web",
+};
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body><a className="skip-link" href="#main-content">Skip to content</a><Nav /><main id="main-content">{children}</main><footer className="site-footer"><span>Cifra / Synthetic compensation research</span><span>Estimates in INR/year · Educational use</span></footer></body></html>;
+  return <html lang="en"><body><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} /><a className="skip-link" href="#main-content">Skip to content</a><Nav /><main id="main-content">{children}</main><footer className="site-footer"><span>Cifra / Synthetic compensation research</span><span>Estimates in INR/year · Educational use</span></footer></body></html>;
 }
