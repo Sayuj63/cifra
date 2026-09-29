@@ -64,6 +64,6 @@ npm --prefix apps/web run build
 
 ## Deployment
 
-The source is in the private GitHub repository `Sayuj63/complens`. The selected API host is Render. Its free blueprint in `render.yaml` generates and trains the model during the build and allows the exact Vercel production origin. The Vercel project `complens-web` is linked to the repository with root directory `apps/web`. Set `NEXT_PUBLIC_API_URL` to the actual Render service URL ending in `/api/v1` before the production web build. Verify `/api/v1/health`, `/api/v1/predict`, and browser CORS after deployment. Live URL verification remains pending.
+The source is in the private GitHub repository `Sayuj63/complens`. The selected API host is Render. Its free Singapore blueprint in `render.yaml` generates and trains the model during the build and allows the exact Vercel production origin. The Vercel project `complens-web` is linked to the repository with root directory `apps/web`; its functions also run in Singapore. Set `NEXT_PUBLIC_API_URL` to the actual Render service URL ending in `/api/v1` before the production web build. Verify `/api/v1/health`, `/api/v1/predict`, and browser CORS after deployment. Live URL verification remains pending.
 
 [Deploy the API on Render](https://render.com/deploy?repo=https://github.com/Sayuj63/complens). Because the repository is private, Render needs access to it through its GitHub App. The Blueprint uses the free web service plan. The old Railway configuration remains available as an alternative.
